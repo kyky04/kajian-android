@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="uinbdg.skirpsi.kajian.Activities.TimDetailActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:contentInsetStartWithNavigation="0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="KIRIM KLAIM" />
+
+
+    <LinearLayout
+        android:focusableInTouchMode="true"
+        android:id="@+id/lay_type_klaim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:background="@color/grey_100"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_medium">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <TextView
+                fontPath="fonts/montserrat_medium.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TYPE KLAIM"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_detail_tv_klaim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Klaim Pengobatan" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:clickable="false"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/transparent"
+            android:tint="@color/grey_80"
+            app:srcCompat="@drawable/ic_expand_more_black_24dp" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_medium">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jumlah Klaim"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:padding="@dimen/spacing_small"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_margin="@dimen/spacing_medium"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image_6" />
+
+        <ImageView
+            android:layout_margin="@dimen/spacing_medium"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image_6" />
+
+        <ImageView
+            android:tint="@color/white"
+            android:layout_margin="@dimen/spacing_medium"
+            android:background="@color/grey_10"
+            android:padding="@dimen/spacing_xlarge"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_add_black_24dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_proses"
+        fontPath="fonts/montserrat_bold.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_xxlarge"
+        android:background="@color/colorPrimary"
+        android:text="Proses"
+        android:textColor="@android:color/white" />
+
+
+</LinearLayout>

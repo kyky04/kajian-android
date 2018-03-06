@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="uinbdg.skirpsi.kajian">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="uinbdg.skirpsi.kajian.Activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="uinbdg.skirpsi.kajian.Activities.LoginActivity" />
+        <activity android:name="uinbdg.skirpsi.kajian.Activities.MainActivity" />
+        <activity android:name="uinbdg.skirpsi.kajian.Activities.DaftarActivity" />
+        <activity android:name="uinbdg.skirpsi.kajian.Activities.KajianActivity" />
+        <activity android:name="uinbdg.skirpsi.kajian.Activities.KajianByDateActivity" />
+
+    </application>
+
+</manifest>
