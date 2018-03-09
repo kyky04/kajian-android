@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="uinbdg.skirpsi.kajian.Activities.LapanganActivity">
+    tools:context="uinbdg.skripsi.kajian.Activities.LapanganActivity">
 
 
     <android.support.design.widget.AppBarLayout

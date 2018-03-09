@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uinbdg.skirpsi.kajian.Activities.SplashActivity">
+    tools:context="uinbdg.skripsi.kajian.Activities.SplashActivity">
 
     <ImageView
         android:layout_width="78dp"
