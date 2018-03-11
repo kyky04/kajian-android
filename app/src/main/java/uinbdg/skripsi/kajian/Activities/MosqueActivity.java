@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,6 +28,8 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -48,6 +52,7 @@ import uinbdg.skripsi.kajian.Service.ApiClient;
 import uinbdg.skripsi.kajian.Service.AppConstans;
 import uinbdg.skripsi.kajian.Service.KajianApi;
 import uinbdg.skripsi.kajian.Util.CommonUtil;
+import uinbdg.skripsi.kajian.Util.GPSTracker;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MosqueActivity extends AppCompatActivity {
@@ -67,6 +72,9 @@ public class MosqueActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    GPSTracker gpsTracker;
+    double latitude, longitude;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +83,19 @@ public class MosqueActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
         getMosque();
+
+        gpsTracker = new GPSTracker(this);
+        if (gpsTracker.canGetLocation()) {
+            latitude = gpsTracker.getLatitude();
+            longitude = gpsTracker.getLongitude();
+            // \n is for new line
+            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+        } else {
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            gpsTracker.showSettingsAlert();
+        }
     }
 
     private void initView() {
@@ -109,8 +130,28 @@ public class MosqueActivity extends AppCompatActivity {
                 if (response.code() == AppConstans.HTTP_OK) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         dataItemTeamList.add(response.body().getData().get(i));
+                        dataItemTeamList.get(i).setDistance(getDistance(gpsTracker.getLatitude(),gpsTracker.getLongitude(),response.body().getData().get(i).getLatitude(),response.body().getData().get(i).getLongitude()));
+
                     }
+
+                    Collections.sort(dataItemTeamList, new Comparator<DataItemMosque>() {
+                        @Override
+                        public int compare(DataItemMosque c1, DataItemMosque c2) {
+                            return Float.compare(c1.getDistance(), c2.getDistance());
+                        }
+                    });
                     adapterKajian = new AdapterMosque(MosqueActivity.this, dataItemTeamList);
+                    adapterKajian.setOnItemClickListener(new AdapterMosque.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            Intent i = new Intent(MosqueActivity.this, MapsDetailActivity.class);
+                            i.putExtra("long",dataItemTeamList.get(position).getLongitude());
+                            i.putExtra("lat",dataItemTeamList.get(position).getLatitude());
+                            i.putExtra("nama",dataItemTeamList.get(position).getNama());
+                            i.putExtra("alamat",dataItemTeamList.get(position).getAlamat());
+                            startActivity(i);
+                        }
+                    });
                     recyclerViewKajian.setAdapter(adapterKajian);
                     recyclerViewKajian.setHasFixedSize(true);
 
@@ -140,6 +181,10 @@ public class MosqueActivity extends AppCompatActivity {
         progressDialog.dismiss();
     }
 
-
+    public static float getDistance(double startLati, double startLongi, double goalLati, double goalLongi) {
+        float[] resultArray = new float[99];
+        Location.distanceBetween(startLati, startLongi, goalLati, goalLongi, resultArray);
+        return resultArray[0];
+    }
 
 }

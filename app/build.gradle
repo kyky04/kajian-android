@@ -59,5 +59,6 @@ dependencies {
     implementation 'com.mikepenz:iconics-core:3.0.2@aar'
     implementation "com.mikepenz:iconics-views:3.0.2@aar"
     implementation 'com.karumi:dexter:4.2.0'
+    compile 'com.google.android.gms:play-services-maps:11.0.2'
 
 }

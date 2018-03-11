@@ -96,7 +96,7 @@ public class AdapterKajianByLocation extends RecyclerView.Adapter<RecyclerView.V
         loc2.setLatitude(kajian.getMosque().getLatitude());
         loc2.setLongitude(kajian.getMosque().getLongitude());
 
-        float distanceInMeters = loc1.distanceTo(loc2) / 1000000;
+        float distanceInMeters = loc1.distanceTo(loc2) / 1000;
         DecimalFormat df2 = new DecimalFormat(".##");
 
         if (holder instanceof OriginalViewHolder) {

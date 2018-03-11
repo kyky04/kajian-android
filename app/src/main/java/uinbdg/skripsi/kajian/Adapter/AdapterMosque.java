@@ -1,6 +1,7 @@
 package uinbdg.skripsi.kajian.Adapter;
 
 import android.content.Context;
+import android.location.Location;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import uinbdg.skripsi.kajian.Model.DataItemKajian;
 import uinbdg.skripsi.kajian.Model.DataItemMosque;
 import uinbdg.skripsi.kajian.R;
+import uinbdg.skripsi.kajian.Util.GPSTracker;
 
 /**
  * Created by Comp on 2/11/2018.
@@ -22,6 +23,8 @@ import uinbdg.skripsi.kajian.R;
 public class AdapterMosque extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     List<DataItemMosque> dataItemKajianList;
+    GPSTracker gpsTracker;
+
 
 
     private OnLoadMoreListener onLoadMoreListener;
@@ -44,6 +47,7 @@ public class AdapterMosque extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public AdapterMosque(Context ctx, List<DataItemMosque> dataItemTeamList) {
         this.dataItemKajianList = dataItemTeamList;
         this.ctx = ctx;
+        gpsTracker = new GPSTracker(ctx);
     }
 
 
@@ -52,6 +56,8 @@ public class AdapterMosque extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         EditText etMosque;
         @BindView(R.id.et_alamat)
         EditText etAlamat;
+        @BindView(R.id.et_map)
+        EditText etMap;
 
         public OriginalViewHolder(View v) {
             super(v);
@@ -76,6 +82,7 @@ public class AdapterMosque extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             OriginalViewHolder view = (OriginalViewHolder) holder;
             view.etMosque.setText(kajian.getNama());
             view.etAlamat.setText(kajian.getAlamat());
+            view.etMosque.setText(String.valueOf(getDistance(gpsTracker.getLatitude(), gpsTracker.getLongitude(), dataItemKajianList.get(position).getLatitude(), dataItemKajianList.get(position).getLongitude()) / 1000) + " Km");
         }
     }
 
@@ -95,6 +102,12 @@ public class AdapterMosque extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public interface OnLoadMoreListener {
         void onLoadMore(int current_page);
+    }
+
+    public static float getDistance(double startLati, double startLongi, double goalLati, double goalLongi) {
+        float[] resultArray = new float[99];
+        Location.distanceBetween(startLati, startLongi, goalLati, goalLongi, resultArray);
+        return resultArray[0];
     }
 
 }
