@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, KajianByDateActivity.class));
                 break;
             case R.id.btn_mosque:
-                startActivity(new Intent(this, MosqueActivity.class));
+                startActivity(new Intent(this, MapsActivity.class));
                 break;
             case R.id.btn_search:
                 startActivity(new Intent(this, KajianActivity.class));

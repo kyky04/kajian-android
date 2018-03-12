@@ -29,6 +29,7 @@
         <activity android:name="uinbdg.skripsi.kajian.Activities.KajianByDateActivity" />
         <activity android:name="uinbdg.skripsi.kajian.Activities.MosqueActivity" />
         <activity android:name="uinbdg.skripsi.kajian.Activities.MapsDetailActivity" />
+        <activity android:name="uinbdg.skripsi.kajian.Activities.MapsActivity" />
 
     </application>
 
