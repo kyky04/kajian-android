@@ -12,6 +12,9 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <activity android:name="uinbdg.skripsi.kajian.Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
