@@ -107,7 +107,7 @@ public class AdapterKajianByLocation extends RecyclerView.Adapter<RecyclerView.V
             view.tvTema.setText(kajian.getTema());
             view.etMosque.setText(kajian.getMosque().getNama());
             view.etWaktu.setText(kajian.getWaktuKajian());
-            view.etDate.setText(kajian.getWaktu().substring(0, 6));
+            view.etDate.setText(kajian.getWaktu().substring(0, 10));
             view.etAlamat.setText(kajian.getMosque().getAlamat());
             view.etLocation.setText(String.valueOf(df2.format(distanceInMeters)) + " KM");
 

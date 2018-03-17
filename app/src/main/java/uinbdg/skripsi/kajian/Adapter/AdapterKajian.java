@@ -89,7 +89,7 @@ public class AdapterKajian extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             view.tvTema.setText(kajian.getTema());
             view.etMosque.setText(kajian.getMosque().getNama());
             view.etWaktu.setText(kajian.getWaktuKajian());
-            view.etDate.setText(kajian.getWaktu().substring(0, 6));
+            view.etDate.setText(kajian.getWaktu().substring(0, 10));
             view.etAlamat.setText(kajian.getMosque().getAlamat());
             view.viewItem.setOnClickListener(new View.OnClickListener() {
                 @Override
