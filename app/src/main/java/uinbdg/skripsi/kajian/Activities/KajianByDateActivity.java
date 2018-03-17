@@ -1,6 +1,7 @@
 package uinbdg.skripsi.kajian.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -38,7 +39,7 @@ public class KajianByDateActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view_kajian)
     RecyclerView recyclerViewPeserta;
 
-    List<DataItemKajian> dataItemTeamList;
+    List<DataItemKajian> dataItemKajian;
 
     AdapterKajian adapterKajian;
 
@@ -60,7 +61,7 @@ public class KajianByDateActivity extends AppCompatActivity {
     private void initView() {
         retrofit = ApiClient.newInstance();
         kajianApi = retrofit.create(KajianApi.class);
-        dataItemTeamList = new ArrayList<>();
+        dataItemKajian = new ArrayList<>();
         toolbar.setTitle(CommonUtil.getCurrentDate());
         recyclerViewPeserta.setLayoutManager(new LinearLayoutManager(this));
 
@@ -87,9 +88,18 @@ public class KajianByDateActivity extends AppCompatActivity {
             public void onResponse(Call<KajianResponse> call, Response<KajianResponse> response) {
                 if(response.code() == AppConstans.HTTP_OK){
                     for (int i = 0; i < response.body().getData().size(); i++) {
-                        dataItemTeamList.add(response.body().getData().get(i));
+                        dataItemKajian.add(response.body().getData().get(i));
                     }
-                    adapterKajian = new AdapterKajian(KajianByDateActivity.this,dataItemTeamList);
+                    adapterKajian = new AdapterKajian(KajianByDateActivity.this, dataItemKajian);
+                    adapterKajian.setOnItemClickListener(new AdapterKajian.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            Intent intent = new Intent(KajianByDateActivity.this,MapsDetailActivity.class);
+                            intent.putExtra("long", dataItemKajian.get(position).getMosque().getLongitude());
+                            intent.putExtra("lat", dataItemKajian.get(position).getMosque().getLatitude());
+                            startActivity(intent);
+                        }
+                    });
                     recyclerViewPeserta.setAdapter(adapterKajian);
                     recyclerViewPeserta.setHasFixedSize(true);
 

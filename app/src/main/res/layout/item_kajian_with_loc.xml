@@ -24,6 +24,7 @@
             app:cardElevation="2dp">
 
             <LinearLayout
+                android:id="@+id/view_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -96,20 +97,12 @@
                             android:src="@drawable/ic_account_balance"
                             android:tint="@color/grey_500" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/et_mosque"
-                            fontPath="fonts/montserrat_medium.ttf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:enabled="false"
-                            android:hint="No Handphone"
-                            android:inputType="number"
-                            android:padding="@dimen/spacing_medium"
-                            android:text="Masjid Marlina Bukhari"
-                            android:textColor="@color/black_de" />
+                            android:text="Mencari Ilmu"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
                     </LinearLayout>
@@ -131,17 +124,12 @@
                             android:src="@drawable/ic_place_black_24dp"
                             android:tint="@color/grey_500" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/et_alamat"
-                            fontPath="fonts/montserrat_medium.ttf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:gravity="top"
-                            android:padding="@dimen/spacing_medium"
-                            android:text="Pangkalan Kerinci Kota, Pangkalan Kerinci,Pelaluan Regency, Riau 28654, Indonesia " />
-
+                            android:text="Mencari Ilmu"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                     </LinearLayout>
 
 
@@ -160,20 +148,12 @@
                             android:src="@drawable/ic_access_time"
                             android:tint="@color/grey_500" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/et_waktu"
-                            fontPath="fonts/montserrat_medium.ttf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:enabled="false"
-                            android:hint="No Handphone"
-                            android:inputType="number"
-                            android:padding="@dimen/spacing_medium"
-                            android:text="12:00:00"
-                            android:textColor="@color/black_de" />
+                            android:text="Mencari Ilmu"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
                     </LinearLayout>
@@ -193,20 +173,12 @@
                             android:src="@drawable/ic_date_range_black_24dp"
                             android:tint="@color/grey_500" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/et_date"
-                            fontPath="fonts/montserrat_medium.ttf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:enabled="false"
-                            android:hint="No Handphone"
-                            android:inputType="number"
-                            android:padding="@dimen/spacing_medium"
-                            android:text="12:12:2018"
-                            android:textColor="@color/black_de" />
+                            android:text="Mencari Ilmu"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
                     </LinearLayout>
@@ -226,20 +198,12 @@
                             android:src="@drawable/ic_directions"
                             android:tint="@color/grey_500" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/et_location"
-                            fontPath="fonts/montserrat_medium.ttf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@android:color/transparent"
-                            android:editable="false"
-                            android:enabled="false"
-                            android:hint="No Handphone"
-                            android:inputType="number"
-                            android:padding="@dimen/spacing_medium"
-                            android:text="12 KM"
-                            android:textColor="@color/black_de" />
+                            android:text="Mencari Ilmu"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
                     </LinearLayout>

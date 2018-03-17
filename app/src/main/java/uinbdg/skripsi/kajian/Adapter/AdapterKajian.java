@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -53,13 +53,16 @@ public class AdapterKajian extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         @BindView(R.id.tv_cabang)
         TextView tvTema;
         @BindView(R.id.et_mosque)
-        EditText etMosque;
+        TextView etMosque;
         @BindView(R.id.et_alamat)
-        EditText etAlamat;
+        TextView etAlamat;
         @BindView(R.id.et_waktu)
-        EditText etWaktu;
+        TextView etWaktu;
         @BindView(R.id.et_date)
-        EditText etDate;
+        TextView etDate;
+        @BindView(R.id.view_item)
+        LinearLayout viewItem;
+
         public OriginalViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
@@ -86,8 +89,14 @@ public class AdapterKajian extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             view.tvTema.setText(kajian.getTema());
             view.etMosque.setText(kajian.getMosque().getNama());
             view.etWaktu.setText(kajian.getWaktuKajian());
-            view.etDate.setText(kajian.getWaktu());
+            view.etDate.setText(kajian.getWaktu().substring(0, 6));
             view.etAlamat.setText(kajian.getMosque().getAlamat());
+            view.viewItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickListener.onItemClick(position);
+                }
+            });
         }
     }
 

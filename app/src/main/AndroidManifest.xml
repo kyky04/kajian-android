@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uinbdg.skripsi.kajian">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -15,22 +15,23 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name="uinbdg.skripsi.kajian.Activities.SplashActivity">
+
+        <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="uinbdg.skripsi.kajian.Activities.LoginActivity" />
-        <activity android:name="uinbdg.skripsi.kajian.Activities.MainActivity" />
-        <activity android:name="uinbdg.skripsi.kajian.Activities.DaftarActivity" />
-        <activity android:name="uinbdg.skripsi.kajian.Activities.KajianActivity" />
-        <activity android:name="uinbdg.skripsi.kajian.Activities.KajianByDateActivity" />
-        <activity android:name="uinbdg.skripsi.kajian.Activities.MosqueActivity" />
-        <activity android:name="uinbdg.skripsi.kajian.Activities.MapsDetailActivity" />
-        <activity android:name="uinbdg.skripsi.kajian.Activities.MapsActivity" />
-
+        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.DaftarActivity" />
+        <activity android:name=".Activities.KajianActivity" />
+        <activity android:name=".Activities.KajianByDateActivity" />
+        <activity android:name=".Activities.MosqueActivity" />
+        <activity android:name=".Activities.MapsDetailActivity" />
+        <activity android:name=".Activities.MapsActivity" />
+        <activity android:name=".Activities.TentangActivity"></activity>
     </application>
 
 </manifest>

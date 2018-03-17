@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -60,7 +61,7 @@ public class KajianActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view_kajian)
     RecyclerView recyclerViewKajian;
 
-    List<DataItemKajian> dataItemTeamList;
+    List<DataItemKajian> dataItemKajian;
 
     AdapterKajian adapterKajian;
     AdapterKajianByLocation adapterKajianByLoacation;
@@ -91,7 +92,7 @@ public class KajianActivity extends AppCompatActivity {
     private void initView() {
         retrofit = ApiClient.newInstance();
         kajianApi = retrofit.create(KajianApi.class);
-        dataItemTeamList = new ArrayList<>();
+        dataItemKajian = new ArrayList<>();
         recyclerViewKajian.setLayoutManager(new LinearLayoutManager(this));
         spPilihan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -163,9 +164,18 @@ public class KajianActivity extends AppCompatActivity {
                 closeDialog();
                 if (response.code() == AppConstans.HTTP_OK) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
-                        dataItemTeamList.add(response.body().getData().get(i));
+                        dataItemKajian.add(response.body().getData().get(i));
                     }
-                    adapterKajian = new AdapterKajian(KajianActivity.this, dataItemTeamList);
+                    adapterKajian = new AdapterKajian(KajianActivity.this, dataItemKajian);
+                    adapterKajian.setOnItemClickListener(new AdapterKajian.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            Intent intent = new Intent(KajianActivity.this,MapsDetailActivity.class);
+                            intent.putExtra("long", dataItemKajian.get(position).getMosque().getLongitude());
+                            intent.putExtra("lat", dataItemKajian.get(position).getMosque().getLatitude());
+                            startActivity(intent);
+                        }
+                    });
                     recyclerViewKajian.setAdapter(adapterKajian);
                     recyclerViewKajian.setHasFixedSize(true);
 
@@ -195,9 +205,18 @@ public class KajianActivity extends AppCompatActivity {
                 closeDialog();
                 if (response.code() == AppConstans.HTTP_OK) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
-                        dataItemTeamList.add(response.body().getData().get(i));
+                        dataItemKajian.add(response.body().getData().get(i));
                     }
-                    adapterKajianByLoacation = new AdapterKajianByLocation(KajianActivity.this, dataItemTeamList);
+                    adapterKajianByLoacation = new AdapterKajianByLocation(KajianActivity.this, dataItemKajian);
+                    adapterKajianByLoacation.setOnItemClickListener(new AdapterKajianByLocation.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            Intent intent = new Intent(KajianActivity.this,MapsDetailActivity.class);
+                            intent.putExtra("long", dataItemKajian.get(position).getMosque().getLongitude());
+                            intent.putExtra("lat", dataItemKajian.get(position).getMosque().getLatitude());
+                            startActivity(intent);
+                        }
+                    });
                     recyclerViewKajian.setAdapter(adapterKajianByLoacation);
                     recyclerViewKajian.setHasFixedSize(true);
 
@@ -228,9 +247,18 @@ public class KajianActivity extends AppCompatActivity {
                 closeDialog();
                 if (response.code() == AppConstans.HTTP_OK) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
-                        dataItemTeamList.add(response.body().getData().get(i));
+                        dataItemKajian.add(response.body().getData().get(i));
                     }
-                    adapterKajian = new AdapterKajian(KajianActivity.this, dataItemTeamList);
+                    adapterKajian = new AdapterKajian(KajianActivity.this, dataItemKajian);
+                    adapterKajian.setOnItemClickListener(new AdapterKajian.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            Intent intent = new Intent(KajianActivity.this,MapsDetailActivity.class);
+                            intent.putExtra("long", dataItemKajian.get(position).getMosque().getLongitude());
+                            intent.putExtra("lat", dataItemKajian.get(position).getMosque().getLatitude());
+                            startActivity(intent);
+                        }
+                    });
                     recyclerViewKajian.setAdapter(adapterKajian);
                     recyclerViewKajian.setHasFixedSize(true);
 
@@ -254,7 +282,7 @@ public class KajianActivity extends AppCompatActivity {
 
     @OnClick(R.id.action_search)
     public void onViewClicked() {
-        dataItemTeamList.clear();
+        dataItemKajian.clear();
         int selected_pos = spPilihan.getSelectedItemPosition();
         if (selected_pos == 0) {
             getKajian();

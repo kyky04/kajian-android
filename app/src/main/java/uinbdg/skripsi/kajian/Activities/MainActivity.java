@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, KajianActivity.class));
                 break;
             case R.id.btn_tentang:
+                startActivity(new Intent(this, TentangActivity.class));
                 break;
         }
     }
