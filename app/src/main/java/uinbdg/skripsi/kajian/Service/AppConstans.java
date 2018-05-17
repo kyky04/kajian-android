@@ -11,7 +11,7 @@ public class AppConstans {
     public static final String REFRESH_TOKEN = "refresh_token";
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
-    public static final String AUTHENTICATION_SERVER_URL = "http://192.168.0.26/kajian/public/api/";
+    public static final String AUTHENTICATION_SERVER_URL = "http://kajian.cupukomputer.com/public/api/";
     public static final String RESOURCE_SERVER_URL = "resource_server_url";
     public static final String GRANT_TYPE = "grant_type";
     public static final String SCOPE = "scope";

@@ -28,9 +28,11 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -79,6 +81,8 @@ public class KajianActivity extends AppCompatActivity {
     String tanggal;
 
     DatePickerDialog datePickerDialog;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,7 +168,15 @@ public class KajianActivity extends AppCompatActivity {
                 closeDialog();
                 if (response.code() == AppConstans.HTTP_OK) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
-                        dataItemKajian.add(response.body().getData().get(i));
+                        Date strDate = null;
+                        try {
+                            strDate = sdf.parse(response.body().getData().get(i).getWaktu());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        if(new Date().after(strDate)){
+                            dataItemKajian.add(response.body().getData().get(i));
+                        }
                     }
                     adapterKajian = new AdapterKajian(KajianActivity.this, dataItemKajian);
                     adapterKajian.setOnItemClickListener(new AdapterKajian.OnItemClickListener() {
@@ -205,7 +217,15 @@ public class KajianActivity extends AppCompatActivity {
                 closeDialog();
                 if (response.code() == AppConstans.HTTP_OK) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
-                        dataItemKajian.add(response.body().getData().get(i));
+                        Date strDate = null;
+                        try {
+                             strDate = sdf.parse(response.body().getData().get(i).getWaktu());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        if(new Date().after(strDate)){
+                            dataItemKajian.add(response.body().getData().get(i));
+                        }
                     }
                     adapterKajianByLoacation = new AdapterKajianByLocation(KajianActivity.this, dataItemKajian);
                     adapterKajianByLoacation.setOnItemClickListener(new AdapterKajianByLocation.OnItemClickListener() {
