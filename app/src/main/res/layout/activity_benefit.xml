@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uinbdg.skripsi.kajian.Activities.TimDetailActivity">
+    tools:context="uinbdg.skripsi.pesantren.Activities.TimDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

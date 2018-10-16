@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "uinbdg.skripsi.kajian"
+        applicationId "uinbdg.skripsi.pesantren"
         minSdkVersion 17
         targetSdkVersion 26
         versionCode 1
@@ -25,9 +25,7 @@ android {
 }
 
 dependencies {
-    implementation("com.mikepenz:materialdrawer:6.0.2@aar") {
-        transitive = true
-    }
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -50,6 +48,7 @@ dependencies {
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.github.lutvie72:RackMonthPicker:1.4'
+    implementation 'com.amitshekhar.android:android-networking:1.0.1'
 
     implementation 'com.roughike:bottom-bar:2.3.1'
     implementation 'com.stepstone.stepper:material-stepper:4.3.1'

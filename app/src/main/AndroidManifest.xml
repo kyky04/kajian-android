@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="uinbdg.skripsi.kajian">
+    package="uinbdg.skripsi.pesantren">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        android:name="uinbdg.skripsi.pesantren.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,22 +17,20 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Activities.SplashActivity">
+        <activity android:name="uinbdg.skripsi.pesantren.Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.LoginActivity" />
-        <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Activities.DaftarActivity" />
-        <activity android:name=".Activities.KajianActivity" />
-        <activity android:name=".Activities.KajianByDateActivity" />
-        <activity android:name=".Activities.MosqueActivity" />
-        <activity android:name=".Activities.MapsDetailActivity" />
-        <activity android:name=".Activities.MapsActivity" />
-        <activity android:name=".Activities.TentangActivity"></activity>
+        <activity android:name="uinbdg.skripsi.pesantren.Activities.LoginActivity" />
+        <activity android:name="uinbdg.skripsi.pesantren.Activities.MainActivity" />
+        <activity android:name="uinbdg.skripsi.pesantren.Activities.DaftarActivity" />
+        <activity android:name="uinbdg.skripsi.pesantren.Activities.SearchPesantrenActivity" />
+        <activity android:name="uinbdg.skripsi.pesantren.Activities.PesantrenActivity" />
+        <activity android:name="uinbdg.skripsi.pesantren.Activities.MapsDetailActivity" />
+        <activity android:name="uinbdg.skripsi.pesantren.Activities.TentangActivity"></activity>
     </application>
 
 </manifest>
